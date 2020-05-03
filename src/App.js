@@ -1,6 +1,7 @@
 import React from 'react'
 // import * as BooksAPI from './BooksAPI'
 import './App.css'
+import {Route, Link} from 'react-router-dom'
 
 class BooksApp extends React.Component {
   state = {
@@ -16,7 +17,7 @@ class BooksApp extends React.Component {
   render() {
     return (
       <div className="app">
-        {this.state.showSearchPage ? (
+        <Route exact path='/search' render={()=>(
           <div className="search-books">
             <div className="search-books-bar">
               <button className="close-search" onClick={() => this.setState({ showSearchPage: false })}>Close</button>
@@ -37,8 +38,9 @@ class BooksApp extends React.Component {
               <ol className="books-grid"></ol>
             </div>
           </div>
-        ) : (
-          <div className="list-books">
+          )} />
+<Route exact path='/' render={()=>(
+<div className="list-books">
             <div className="list-books-title">
               <h1>MyReads</h1>
             </div>
@@ -194,11 +196,13 @@ class BooksApp extends React.Component {
               </div>
             </div>
             <div className="open-search">
-              <button onClick={() => this.setState({ showSearchPage: true })}>Add a book</button>
+            <Link to='/search'><button>Add a book</button></Link>
             </div>
           </div>
-        )}
+        )} />
+      
       </div>
+          
     )
   }
 }
