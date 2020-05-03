@@ -9,11 +9,6 @@ import Wish from './components/WishList'
 import * as BookApi from './BooksAPI'
 
 
-// function ShiftTo(To,from){
-
-// }
-
-
 class BooksApp extends React.Component {
   state={
     'CurrentlyReading':[],
@@ -21,6 +16,11 @@ class BooksApp extends React.Component {
     'WantToRead':[]
 
   }
+  ShiftTo=(book,shelf)=>{
+    console.log(book.id,shelf)
+  }
+  
+
   componentDidMount(){
     BookApi.getAll().then(
       (result)=>{
@@ -42,9 +42,12 @@ class BooksApp extends React.Component {
             </div>
             <div className="list-books-content">
               <div>
-                <OnGoing books={this.state.CurrentlyReading} />
-                <Wish books={this.state.WantToRead}/>
-                <BookShelf books={this.state.Read}/>
+                <OnGoing books={this.state.CurrentlyReading}
+                    Move={this.ShiftTo} />
+                <Wish books={this.state.WantToRead}
+                Move={this.ShiftTo} />
+                <BookShelf books={this.state.Read}
+                Move={this.ShiftTo} />
               </div>
             </div>
             <div className="open-search">
