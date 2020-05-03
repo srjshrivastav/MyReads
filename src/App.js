@@ -4,8 +4,6 @@ import './App.css'
 import {Route, Link} from 'react-router-dom'
 import BookShelf from './components/Bookshelf'
 import SearchPage from './components/Search'
-import OnGoing from './components/OnGoing'
-import Wish from './components/WishList'
 import * as BookApi from './BooksAPI'
 
 
@@ -42,12 +40,15 @@ class BooksApp extends React.Component {
             </div>
             <div className="list-books-content">
               <div>
-                <OnGoing books={this.state.CurrentlyReading}
-                    Move={this.ShiftTo} />
-                <Wish books={this.state.WantToRead}
-                Move={this.ShiftTo} />
+                <BookShelf books={this.state.CurrentlyReading}
+                Move={this.ShiftTo}
+                shelf={'Currently Reading'} />
+                <BookShelf books={this.state.WantToRead}
+                Move={this.ShiftTo} 
+                shelf={'Want To Read'}/>
                 <BookShelf books={this.state.Read}
-                Move={this.ShiftTo} />
+                Move={this.ShiftTo}
+                shelf={'Read'} />
               </div>
             </div>
             <div className="open-search">
