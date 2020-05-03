@@ -16,9 +16,9 @@ import * as BookApi from './BooksAPI'
 
 class BooksApp extends React.Component {
   state={
-    'CurrentlyReading':{},
-    'Read':{},
-    'WantToRead':{}
+    'CurrentlyReading':[],
+    'Read':[],
+    'WantToRead':[]
 
   }
   componentDidMount(){
