@@ -4,7 +4,6 @@ import BookUI from './Book'
 
 class BookShelf extends Component{
   handleevent=(event,book)=>{
-  if(event.target.value!=='none')
     this.props.Move(book,event.target.value)
   }
 
