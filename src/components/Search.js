@@ -1,27 +1,53 @@
 import React,{Component} from 'react'
 import {Link} from 'react-router-dom'
+import {search,update} from '../BooksAPI'
+import BookUI from './Book'
 
 class SearchPage extends Component{
+  state={
+    books:[]
+  }
+  handleevent=(event,book)=>{
+    if(event.target.value!=='none')
+      update(book,event.target.value)
+    }
+  doSearch=query=>{
+  if(query!==''){
+    search(query)
+    .then((res)=>{
+      this.setState(()=>({
+        books:res.length?res:[]
+      }))
+      console.log(this.state.books)
+      console.log(this.state.books.map((BOOK)=>BOOK.authors))
+    })
+  }
+  else{
+    this.setState(()=>({
+      books:[]
+    }))
+  }
+  }
     render(){
         return(
             <div className="search-books">
             <div className="search-books-bar">
               <Link to='/'><button className="close-search">Close</button></Link>
               <div className="search-books-input-wrapper">
-                {/*
-                  NOTES: The search from BooksAPI is limited to a particular set of search terms.
-                  You can find these search terms here:
-                  https://github.com/udacity/reactnd-project-myreads-starter/blob/master/SEARCH_TERMS.md
-
-                  However, remember that the BooksAPI.search method DOES search by title or author. So, don't worry if
-                  you don't find a specific author or title. Every search is limited by search terms.
-                */}
-                <input type="text" placeholder="Search by title or author"/>
-
+                <input type="text" placeholder="Search by title or author" onChange={(event)=>{this.doSearch(event.target.value)}}/>
               </div>
             </div>
             <div className="search-books-results">
-              <ol className="books-grid"></ol>
+              <ol className="books-grid">
+                {this.state.books.map((b)=>(
+              <li key={b.id}>
+                <div className="book">
+                    <BookUI book={b} 
+                            shelfchanger={this.handleevent}/>
+                  </div>
+                </li>
+                ))}
+              </ol>
             </div>
           </div>
         )
