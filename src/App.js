@@ -12,17 +12,27 @@ class BooksApp extends React.Component {
 
   }
   ShiftTo=(book,s)=>{
-    let _book=this.state.books.filter((_book)=>_book.id===book.id)[0]
-    let index =this.state.books.indexOf(_book)
-    _book.shelf=s
-    this.state.books.splice(index,1,_book)
+    let _book=this.state.books.filter((_book)=>_book.id===book.id)
+    if(_book.length){
+    let index =this.state.books.indexOf(_book[0])
+    _book[0].shelf=s
+    this.state.books.splice(index,1,_book[0])
     this.setState(()=>({
       books:this.state.books
     }))
-    BookApi.update(book,s)
-
   }
+  else{
+    this.addNewBook(book)
+  }
+  BookApi.update(book,s)
+  }
+addNewBook=(book)=>{
+  this.setState((state)=>({
+    books:state.books.concat([book])
+  }))
 
+
+}
   getBooks=()=>{
     BookApi.getAll().then(
       (result)=>{
@@ -40,7 +50,8 @@ class BooksApp extends React.Component {
     return (
       <div className="app">
         <Route exact path='/search' render={()=>(
-          <SearchPage currentState={this.state.books}/>)
+          <SearchPage addNewBook={this.ShiftTo}
+                      books={this.state.books}/>)
         } />
         <Route exact path='/' render={()=>(
         <div className="list-books">
