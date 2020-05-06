@@ -17,8 +17,8 @@ There is an Add button which takes you to the search page and there you can sear
 
 Prerequisites :<br />
 
-1.Should installed Node.js<br />
-2.Should have npm<br />
+1.Should have Node.js installed on your system<br />
+2.Should have npm to install dependencies<br />
 <br />
 Installation :<br />
 <br />
