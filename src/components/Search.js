@@ -57,7 +57,6 @@ class SearchPage extends Component {
             {this.state.books.map((b) => (b.imageLinks ?
               <li key={b.id}>
                 <BookUI book={this.assignShelf(b)}
-                  books={this.props.books}
                   shelfchanger={this.handleevent} />
               </li> : <div></div>
             ))}
