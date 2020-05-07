@@ -54,11 +54,11 @@ class SearchPage extends Component {
         </div>
         <div className="search-books-results">
           <ol className="books-grid">
-            {this.state.books.map((b) => (b.imageLinks ?
+            {this.state.books.map((b) => (b.imageLinks && b.id &&
               <li key={b.id}>
                 <BookUI book={this.assignShelf(b)}
                   shelfchanger={this.handleevent} />
-              </li> : <div></div>
+              </li> 
             ))}
           </ol>
         </div>
