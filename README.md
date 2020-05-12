@@ -1,6 +1,6 @@
 # MyReads Project
 
-This project will track your books means which books you are reading and which books you have finished and which books you want to read after completing the current reading books.  
+This project will track your books means which books you are reading and which books you have finished and which books you want to read after completing the current reading books.
 
 # Shelves
 
@@ -13,7 +13,7 @@ There are three Shelves :-<br />
 
 There is an Add button which takes you to the search page and there you can search the books and add to your book shelf.
 
-# Guid To Install
+# Guid To Install and Start the project
 
 Prerequisites :<br />
 
@@ -25,4 +25,4 @@ Installation :<br />
 1.Clone the repository<br />
 2.Now, Go in the project directory and run command - npm install<br />
 3.this will install all the dependencies<br />
-
+4.To launch the Project run command - npm Start
