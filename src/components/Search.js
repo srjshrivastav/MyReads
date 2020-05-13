@@ -60,7 +60,7 @@ class SearchPage extends Component {
           <ol className="books-grid">
             {this.state.books.map(
               (b) =>
-                b.imageLinks.thumbnail &&
+                b.imageLinks &&
                 b.id && (
                   <li key={b.id}>
                     <BookUI
